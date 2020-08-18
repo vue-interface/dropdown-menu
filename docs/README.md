@@ -1,4 +1,4 @@
-# Btn
+# DropdownMenu
 
 [[toc]]
 
@@ -14,4 +14,4 @@ Yarn
 
 CDN
 
-    https://cdn.jsdelivr.net/npm/<%= pkg.name %>@<%= pkg.version %>/dist/ActivityIndicator.min.js
+    https://cdn.jsdelivr.net/npm/<%= pkg.name %>@<%= pkg.version %>/dist/DropdownMenu.min.js
