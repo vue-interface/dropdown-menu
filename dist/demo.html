@@ -1,10 +1,19 @@
 <meta charset="utf-8">
 <title>DropdownMenu demo</title>
+<script src="https://unpkg.com/vue"></script>
 <script src="./DropdownMenu.umd.js"></script>
 
 <link rel="stylesheet" href="./DropdownMenu.css">
 
 
+<div id="app">
+  <demo></demo>
+</div>
+
 <script>
-console.log(DropdownMenu)
+new Vue({
+  components: {
+    demo: DropdownMenu
+  }
+}).$mount('#app')
 </script>

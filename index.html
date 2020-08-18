@@ -18,56 +18,36 @@
 
             <div class="dropdown position-relative">
                 <dropdown-menu :show="true" :style="{'position': 'relative', 'float': 'none'}">
-                    <dropdown-menu-item>Item #1</dropdown-menu-item>
-                    <dropdown-menu-item>Item #2</dropdown-menu-item>
-                    <dropdown-menu-header>Some Header</dropdown-menu-header>
-                    <dropdown-menu-item active>Item #3</dropdown-menu-item>
-                    <dropdown-menu-item @click="hasClicked = true">Item #4</dropdown-menu-item>
-                    <dropdown-menu-divider></dropdown-menu-divider>
-                    <dropdown-menu-item href="http://google.com">Redirect to Google.com</dropdown-menu-item>
-                </dropdown-menu>
-            </div>
-
-            <hr>
-
-            <h3>From Array</h3>
-
-            <span v-if="hasClicked2">Item #4 was clicked!</span>
-
-            <div class="position-relative">
-                <dropdown-menu
-                    :show="true"
-                    :style="{'position': 'relative', 'float': 'none'}"
-                    :items="[
-                        {'type': 'item', 'label': 'Item #1'},
-                        {'type': 'item', 'label': 'Item #2'},
-                        {'type': 'header', 'header': 'Some Header'},
-                        {'type': 'item', 'label': 'Item #3'},
-                        {'type': 'item', 'label': 'Item #4', onClick:() => hasClicked2 = true},
-                        {'type': 'divider'},
-                        {'type': 'item', 'label': 'Redirect to Google.com', href: 'http://google.com'},
-                    ]">
+                    <router-link :to="{name: 'Home'}" @click="hasClicked = true">Item #1</router-link>
+                    <h5>Some Header</h5>
+                    <a href="#" class="test" @click="hasClicked = true">Item #2</a>
+                    <h5 class="test">Some Header</h5>
+                    <a href="#" class="active">Item #3</a>
+                    <a href="#">Item #4</a>
+                    <hr />
+                    <a href="http://google.com" class="dropdown-item">Redirect to Google.com</a>
                 </dropdown-menu>
             </div>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue-router/dist/vue-router.js"></script>
         <script type="text/javascript" src="./dist/DropdownMenu.umd.js"></script>
         <script type="text/javascript">
-            const {
-                DropdownMenu,
-                DropdownMenuDivider,
-                DropdownMenuHeader,
-                DropdownMenuItem,
-            } = window.DropdownMenu;
+            Vue.use(VueRouter);
 
+            const router = new VueRouter({
+                routes: [{
+                    path: '/test',
+                    name: 'Home'
+                }]
+            });
+                
             const vue = new Vue({
                 el: '#app',
+                router,
                 components: {
-                    DropdownMenu,
-                    DropdownMenuDivider,
-                    DropdownMenuHeader,
-                    DropdownMenuItem
+                    DropdownMenu
                 },
                 data() {
                     return {
