@@ -50,18 +50,18 @@ module.exports = plugin(function({ addComponents, theme, postcss }) {
 
         '.dropdown-toggle': {
             whiteSpace: 'nowrap',
-            
-            '&::after': {
-                display: 'inline-block',
-                marginLeft: '.3em',
-                verticalAlign: 'calc(.3em * .85)',
-                content: '',
-                borderTop: '.3em solid',
-                borderRight: '.3em solid transparent',
-                borderBottom: 0,
-                borderLeft: '.3em solid transparent'
-            }
         },
+            
+        '.dropdown-toggle::after': theme('dropdownMenu.enableCarets') ? {
+            display: 'inline-block',
+            marginLeft: '.3em',
+            verticalAlign: 'calc(.3em * .85)',
+            content: '""',
+            borderTop: '.3em solid',
+            borderRight: '.3em solid transparent',
+            borderBottom: 0,
+            borderLeft: '.3em solid transparent'
+        } : undefined,
 
         // The dropdown menu
         '.dropdown-menu': {
@@ -93,74 +93,66 @@ module.exports = plugin(function({ addComponents, theme, postcss }) {
 
         // Allow for dropdowns to go bottom up (aka, dropup-menu)
         // Just add .dropup after the standard .dropdown class and you're set.
-        '.dropup': {
-            '.dropdown-menu': {
-                top: 'auto',
-                bottom: '100%',
-                marginTop: 0,
-                marginBottom: theme('dropdownMenu.spacer')
-            },
-        
-            '.dropdown-toggle': {            
-                '&::after': {
-                    display: 'inline-block',
-                    marginLeft: '.3em',
-                    verticalAlign: 'calc(.3em * .85)',
-                    content: '',
-                    borderTop: 0,
-                    borderRight: '.3em solid transparent',
-                    borderBottom: '.3em solid',
-                    borderLeft: '.3em solid transparent'
-                }
-            }
+        '.dropup .dropdown-menu': {
+            top: 'auto',
+            bottom: '100%',
+            marginTop: 0,
+            marginBottom: theme('dropdownMenu.spacer')
         },
+    
+        '.dropup .dropdown-toggle::after': theme('dropdownMenu.enableCarets') ? {
+            display: 'inline-block',
+            marginLeft: '.3em',
+            verticalAlign: 'calc(.3em * .85)',
+            content: '""',
+            borderTop: 0,
+            borderRight: '.3em solid transparent',
+            borderBottom: '.3em solid',
+            borderLeft: '.3em solid transparent'
+        } : undefined,
         
-        '.dropright': {
-            '.dropdown-menu': {
-                top: 0,
-                right: 'auto',
-                left: '100%',
-                marginTop: 0,
-                marginLeft: theme('dropdownMenu.spacer')
-            },
-        
-            '.dropdown-toggle': {           
-                '&::after': {
-                    display: 'inline-block',
-                    marginLeft: '.3em',
-                    verticalAlign: 'calc(.3em * .85)',
-                    content: '',
-                    borderTop: '.3em solid transparent',
-                    borderRight: 0,
-                    borderBottom: '.3em solid transparent',
-                    borderLeft: '.3em solid',
-                    verticalAlign: 0
-                }
-            }
+        '.dropright .dropdown-menu': {
+            top: 0,
+            right: 'auto',
+            left: '100%',
+            marginTop: 0,
+            marginLeft: theme('dropdownMenu.spacer')
         },
+    
+        '.dropright .dropdown-toggle::after': theme('dropdownMenu.enableCarets') ? {
+            display: 'inline-block',
+            marginLeft: '.3em',
+            verticalAlign: 'calc(.3em * .85)',
+            content: '""',
+            borderTop: '.3em solid transparent',
+            borderRight: 0,
+            borderBottom: '.3em solid transparent',
+            borderLeft: '.3em solid',
+            verticalAlign: 0
+        } : undefined,
         
-        '.dropleft': {
-            '.dropdown-menu': {
-                top: 0,
-                right: '100%',
-                left: 'auto',
-                marginTop: 0,
-                marginRight: theme('dropdownMenu.spacer')
-            },
-        
-            '.dropdown-toggle': {           
-                '&::before': {
-                    display: 'inline-block',
-                    marginLeft: '.3em',
-                    verticalAlign: 'calc(.3em * .85)',
-                    content: '',
-                    borderTop: '.3em solid transparent',
-                    borderLeft: 0,
-                    borderBottom: '.3em solid transparent',
-                    borderRight: '.3em solid',
-                    verticalAlign: 0
-                }
-            }
+        '.dropleft .dropdown-menu': {
+            top: 0,
+            right: '100%',
+            left: 'auto',
+            marginTop: 0,
+            marginRight: theme('dropdownMenu.spacer')
+        },
+          
+        '.dropleft .dropdown-toggle::after': {
+            display: 'none'
+        }, 
+
+        '.dropleft .dropdown-toggle::before': {
+            display: 'inline-block',
+            marginRight: '.3em',
+            verticalAlign: 'calc(.3em * .85)',
+            content: '""',
+            borderTop: '.3em solid transparent',
+            borderLeft: 0,
+            borderBottom: '.3em solid transparent',
+            borderRight: '.3em solid',
+            verticalAlign: 0
         },
 
         // Dividers (basically an `<hr>`) within the dropdown
@@ -177,7 +169,7 @@ module.exports = plugin(function({ addComponents, theme, postcss }) {
         '.dropdown-item': {
             display: 'block',
             width: '100%', // For `<button>`s
-            padding: `calc(${theme('dropdownMenu.spacer')} / 4) ${theme('dropdownMenu.item.paddingX')}`,
+            padding: `${theme('dropdownMenu.item.paddingY')} ${theme('dropdownMenu.item.paddingX')}`,
             clear: 'both',
             fontWeight: 'normal',
             color: theme('dropdownMenu.link.color'),
@@ -186,25 +178,25 @@ module.exports = plugin(function({ addComponents, theme, postcss }) {
             whiteSpace: 'nowrap', // prevent links from randomly breaking onto new lines
             backgroundColor: 'transparent', // For `<button>`s
             border: 0, // For `<button>`s
+        },
+    
+        '.dropdown-item:hover, .dropdown-item:focus': {
+            color: theme('dropdownMenu.link.hover.color'),
+            textDecoration: 'none',
+            backgroundColor: theme('dropdownMenu.link.hover.backgroundColor')
+        },
         
-            '&:hover, &:focus': {
-                color: theme('dropdownMenu.link.hover.color'),
-                textDecoration: 'none',
-                backgroundColor: theme('dropdownMenu.link.hover.backgroundColor')
-            },
+        'dropdown-item.active, dropdown-item:active': {
+            color: theme('dropdownMenu.link.active.color'),
+            textDecoration: 'none',
+            backgroundColor: theme('dropdownMenu.link.active.backgroundColor')
+        },
         
-            '&.active, &:active': {
-                color: theme('dropdownMenu.link.active.color'),
-                textDecoration: 'none',
-                backgroundColor: theme('dropdownMenu.link.active.backgroundColor')
-            },
-        
-            '&.disabled, &:disabled': {
-                color: theme('dropdownMenu.link.disabled.color'),
-                pointerEvents: 'none',
-                backgroundColor: 'transparent',
-                backgroundImage: 'none'
-            }
+        'dropdown-item.disabled, dropdown-item:disabled': {
+            color: theme('dropdownMenu.link.disabled.color'),
+            pointerEvents: 'none',
+            backgroundColor: 'transparent',
+            backgroundImage: 'none'
         },
         
         '.dropdown-menu.show': {
@@ -226,51 +218,29 @@ module.exports = plugin(function({ addComponents, theme, postcss }) {
             display: 'block',
             padding: `${theme('dropdownMenu.item.paddingY')} ${theme('dropdownMenu.item.paddingX')}`,
             color: theme('dropdownMenu.link.color'),
+        },
+
+        '.dropdown-menu-left': {
+            right: 'auto',
+            left: 0
+        },
+
+        '.dropdown-menu-right': {
+            right: 0,
+            left: 'auto'
         }
     };
 
-    /*
-    // scss-docs-start responsive-breakpoints
-    @each $breakpoint in map-keys($grid-breakpoints) {
-        @include media-breakpoint-up($breakpoint) {
-            $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-            .dropdown-menu#{$infix}-left {
-            right: auto;
-            left: 0;
-            }
-
-            .dropdown-menu#{$infix}-right {
-            right: 0;
-            left: auto;
-            }
-        }
-    }
-
-    const screens = theme('screens', {});
-
-    const mediaQueries = Object.entries(screens).map(([key, width]) => {
-        console.log(123, key);
-        
-        return {
-            [`@media (min-width: ${width})`]: {
-                
-            }
-        };
-    });
-    */
-
     if(theme('dropdownMenu.paddingY') === 0) {
-        Object.assign(component['.dropdown-item'], {
-            '&:first-child': {
-                borderTopLeftRadius: theme('dropdownMenu.inner.borderRadius'),
-                borderTopRightRadius: theme('dropdownMenu.inner.borderRadius'),
-            },
-            '&:last-child': {
-                borderBottomLeftRadius: theme('dropdownMenu.inner.borderRadius'),
-                borderBottomRightRadius: theme('dropdownMenu.inner.borderRadius'),
-            }
-        });
+        component['.dropdown-item']['&:first-child'] = {
+            borderTopLeftRadius: theme('dropdownMenu.inner.borderRadius'),
+            borderTopRightRadius: theme('dropdownMenu.inner.borderRadius'),
+        };
+
+        component['.dropdown-item']['&:last-child'] = {
+            borderBottomLeftRadius: theme('dropdownMenu.inner.borderRadius'),
+            borderBottomRightRadius: theme('dropdownMenu.inner.borderRadius'),
+        };
     }
 
     addComponents(component);
@@ -278,10 +248,11 @@ module.exports = plugin(function({ addComponents, theme, postcss }) {
     theme: {
         dropdownMenu: theme => ({
             enableShadows: true,
+            enableCarets: true,
             zIndex: 1000,
             minWidth: '10rem',
             paddingY: '.5rem',
-            spacer: '1rem',
+            spacer: '.125rem',
             fontSize: '1rem',
             color: 'inherit',
             backgroundColor: theme('colors.white', colors.white),
@@ -317,7 +288,7 @@ module.exports = plugin(function({ addComponents, theme, postcss }) {
             },
 
             item: {
-                paddingY: 'calc(.125rem / 4)',
+                paddingY: '.25rem',
                 paddingX: '1rem',
             },
 
