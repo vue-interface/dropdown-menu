@@ -1,12 +1,7 @@
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
-    purge: {
-        content: false,
-        options: {
-            whitelistPatterns: [/^bg-/]
-        }
-    },
+    purge: false,
     corePlugins: {
         container: false,
     },
