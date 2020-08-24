@@ -17,6 +17,14 @@ function wrap(wrapper, fn) {
     };
 }
 
+function listener(vnode, key) {
+    return vnode.data.on[key] || (
+        vnode.componentOptions &&
+        vnode.componentOptions.listeners &&
+        vnode.componentOptions.listeners[key]
+    );
+}
+
 export default {
     functional: true,
 
@@ -31,11 +39,11 @@ export default {
 
                 vnode.data.on.click = wrap(e => {
                     context.parent.$emit('click-item', e, vnode);
-                }, vnode.componentOptions && vnode.componentOptions.listeners.click || vnode.data.on.click);
+                }, listener(vnode, 'click'));
 
                 vnode.data.on.blur = wrap(e => {
                     context.parent.$emit('blur-item', e, vnode);
-                }, vnode.componentOptions && vnode.componentOptions.listeners.blur || vnode.data.on.blur);
+                }, listener(vnode, 'blur'));
 
                 if(vnode.tag.match(/^h\d$/)) {
                     appendClass(vnode, 'dropdown-header');

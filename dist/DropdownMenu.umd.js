@@ -2230,7 +2230,7 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: ./src/css/DropdownMenu.css
 var DropdownMenu = __webpack_require__("658e");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0d51dad6-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/DropdownMenu.vue?vue&type=template&id=8919f45e&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5060e856-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/DropdownMenu.vue?vue&type=template&id=8919f45e&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dropdown-menu",class:{'dropdown-menu-left': _vm.align === 'left', 'dropdown-menu-right': _vm.align === 'right', 'show': _vm.show},attrs:{"aria-labelledby":_vm.$attrs.id}},[_c('dropdown-menu-items',[_vm._t("default")],2)],1)}
 var staticRenderFns = []
 
@@ -2600,6 +2600,10 @@ function wrap(wrapper, fn) {
   };
 }
 
+function listener(vnode, key) {
+  return vnode.data.on[key] || vnode.componentOptions && vnode.componentOptions.listeners && vnode.componentOptions.listeners[key];
+}
+
 /* harmony default export */ var DropdownMenuItemsvue_type_script_lang_js_ = ({
   functional: true,
   render: function render(h, context) {
@@ -2616,10 +2620,10 @@ function wrap(wrapper, fn) {
 
       vnode.data.on.click = wrap(function (e) {
         context.parent.$emit('click-item', e, vnode);
-      }, vnode.componentOptions && vnode.componentOptions.listeners.click || vnode.data.on.click);
+      }, listener(vnode, 'click'));
       vnode.data.on.blur = wrap(function (e) {
         context.parent.$emit('blur-item', e, vnode);
-      }, vnode.componentOptions && vnode.componentOptions.listeners.blur || vnode.data.on.blur);
+      }, listener(vnode, 'blur'));
 
       if (vnode.tag.match(/^h\d$/)) {
         appendClass(vnode, 'dropdown-header');
