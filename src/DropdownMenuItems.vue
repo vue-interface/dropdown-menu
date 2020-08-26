@@ -37,6 +37,9 @@ export default {
                     vnode.data.on = {};
                 }
 
+                const isDropdownItem = vnode.data.staticClass && !vnode.data.staticClass.match(/dropdown-item/);
+                const isDropdownDivider = vnode.data.staticClass && !vnode.data.staticClass.match(/dropdown-divider/);
+                
                 vnode.data.on.click = wrap(e => {
                     context.parent.$emit('click-item', e, vnode);
                 }, listener(vnode, 'click'));
@@ -53,7 +56,7 @@ export default {
 
                     appendClass(vnode, 'dropdown-divider');
                 }
-                else if(!vnode.data.staticClass || vnode.data.staticClass && !vnode.data.staticClass.match(/dropdown-item/)) {
+                else if(!isDropdownItem && !isDropdownDivider) {
                     appendClass(vnode, 'dropdown-item');
                 }
             });
