@@ -37,6 +37,7 @@
   },
   "homepage": "https://github.com/vue-interface/dropdown-menu/docs#readme",
   "dependencies": {
+    "@vue-interface/tailwindcss": "^0.2.5",
     "@vue-interface/utils": "^0.9.13",
     "@vue-interface/variant": "^1.0.12",
     "color": "^3.1.2",

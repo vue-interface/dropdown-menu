@@ -2,7 +2,7 @@ const Color = require('color');
 const rgba = require('hex-to-rgba');
 const plugin = require('tailwindcss/plugin');
 const { colors } = require('tailwindcss/defaultTheme');
-const defaultVariations = require('@vue-interface/variant/tailwindcss/defaultVariations');
+const defaultVariations = require('@vue-interface/tailwindcss/defaultVariations');
 
 function darken(color, ...args) {
     return Color(color).darken(...args).hex();
@@ -279,7 +279,7 @@ module.exports = plugin(function({ addComponents, theme, postcss }) {
 
                 active: {
                     color: theme('colors.white', colors.white),
-                    backgroundColor: theme('variations.primary', defaultVariations.primary),
+                    backgroundColor: theme('interface.variations.primary', defaultVariations.primary),
                 },
 
                 disabled: {
