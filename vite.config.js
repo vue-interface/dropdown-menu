@@ -29,6 +29,7 @@ export default defineConfig({
         },
         watch: {
             include: [
+                './tailwindcss.js',
                 './tailwindcss/**/*.js'
             ]
         }
