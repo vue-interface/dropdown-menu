@@ -1,6 +1,6 @@
 {
   "name": "@vue-interface/dropdown-menu",
-  "version": "0.9.8",
+  "version": "1.0.0",
   "description": "A Vue dropdown menu component.",
   "main": "index.js",
   "module": "index.js",
