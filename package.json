@@ -1,8 +1,10 @@
 {
   "name": "@vue-interface/dropdown-menu",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Vue dropdown menu component.",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/dropdown-menu.umd.js",
   "module": "./dist/dropdown-menu.es.js",
   "exports": {
