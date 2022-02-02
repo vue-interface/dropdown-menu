@@ -1,8 +1,12 @@
 <template>
     <div
-        class="dropdown-menu"
-        :class="{'dropdown-menu-left': align === 'left', 'dropdown-menu-right': align === 'right', 'show': show}"
-        :aria-labelledby="$attrs.id">
+        class="dropdown-menu mb-3"
+        :aria-labelledby="$attrs.id"
+        :class="{
+            'dropdown-menu-left': align === 'left',
+            'dropdown-menu-right': align === 'right',
+            'show': show
+        }">
         <dropdown-menu-items>
             <slot @click="onItemClick" />
         </dropdown-menu-items>
@@ -10,7 +14,7 @@
 </template>
 
 <script>
-import DropdownMenuItems from './DropdownMenuItems';
+import DropdownMenuItems from './DropdownMenuItems.vue';
 
 export default {
 
@@ -46,9 +50,3 @@ export default {
 
 };
 </script>
-
-<style>
-.dropdown-menu a.dropdown-item {
-    cursor: pointer;
-}
-</style>

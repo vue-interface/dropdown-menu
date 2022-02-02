@@ -1,14 +1,13 @@
 const Color = require('color');
-const rgba = require('hex-to-rgba');
 const plugin = require('tailwindcss/plugin');
-const { colors } = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 const defaultVariations = require('@vue-interface/tailwindcss/defaultVariations');
 
 function darken(color, ...args) {
     return Color(color).darken(...args).hex();
 }
 
-module.exports = plugin(function({ addComponents, theme, postcss }) {
+module.exports = plugin(function({ addComponents, theme }) {
     const component = {
         ':root': {
             '--dropdown-menu-z-index': theme('dropdownMenu.zIndex'),
@@ -186,13 +185,13 @@ module.exports = plugin(function({ addComponents, theme, postcss }) {
             backgroundColor: theme('dropdownMenu.link.hover.backgroundColor')
         },
         
-        'dropdown-item.active, dropdown-item:active': {
+        '.dropdown-item.active, .dropdown-item:active': {
             color: theme('dropdownMenu.link.active.color'),
             textDecoration: 'none',
             backgroundColor: theme('dropdownMenu.link.active.backgroundColor')
         },
         
-        'dropdown-item.disabled, dropdown-item:disabled': {
+        '.dropdown-item.disabled, .dropdown-item:disabled': {
             color: theme('dropdownMenu.link.disabled.color'),
             pointerEvents: 'none',
             backgroundColor: 'transparent',
@@ -256,10 +255,10 @@ module.exports = plugin(function({ addComponents, theme, postcss }) {
             fontSize: '1rem',
             color: 'inherit',
             backgroundColor: theme('colors.white', colors.white),
-            borderColor: rgba(theme('colors.black', colors.black), .15),
+            borderColor: Color(theme('colors.black', colors.black)).fade(.85),
             borderRadius: '.25rem',
             borderWidth: '1px',
-            boxShadow: `0 .5rem 1rem ${rgba(theme('colors.black', colors.black), .15)}`,
+            boxShadow: `0 .5rem 1rem ${Color(theme('colors.black', colors.black)).fade(.85)}`,
             
             inner: {
                 borderRadius: 'calc(.25rem - 1px)'
@@ -273,7 +272,7 @@ module.exports = plugin(function({ addComponents, theme, postcss }) {
                 color: theme('colors.gray.800', colors.gray[800]),
                 
                 hover: {
-                    color: darken(theme('colors.gray.800', colors.gray[800]), .5),
+                    color: Color(theme('colors.gray.800', colors.gray[800])).darken(.5).hex(),
                     backgroundColor: theme('colors.gray.100', colors.gray[100])
                 },
 

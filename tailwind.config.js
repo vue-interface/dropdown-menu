@@ -1,12 +1,12 @@
-const plugin = require('tailwindcss/plugin');
-
 module.exports = {
-    purge: false,
-    corePlugins: {
-        container: false,
+    content: [
+        "./index.html",
+        "./src/**/*.{vue,js,ts,jsx,tsx}",
+    ],
+    theme: {
+        extend: {},
     },
     plugins: [
-        require('@vue-interface/variant/tailwindcss'),
         require('./tailwindcss')
-    ]
+    ],
 };

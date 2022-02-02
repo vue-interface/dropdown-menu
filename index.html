@@ -4,15 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>DropdownMenu</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap-reboot.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap-grid.min.css">
-        <link rel="stylesheet" href="./dist/DropdownMenu.css">
     </head>
     <body>
-        <div id="app" class="container">
-            <h1>dropdown-menu</h1>
+        <div id="app" class="container mx-auto">
+            <h1 class="text-4xl mb-6">dropdown-menu</h1>
 
-            <h3>Basic Usage</h3>
+            <h3 class="text-2xl">Basic Usage</h3>
 
             <span v-if="hasClicked">Item #4 was clicked!</span>
 
@@ -30,10 +27,14 @@
             </div>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vue-router/dist/vue-router.js"></script>
-        <script type="text/javascript" src="./dist/DropdownMenu.umd.js"></script>
-        <script type="text/javascript">
+        <script type="module">
+            import './index.css';
+            import Vue from 'vue/dist/vue';
+            import VueRouter from 'vue-router';
+            import { DropdownMenu } from './index';
+            
+            Vue.config.devtools = false;
+            Vue.config.productionTip = false;
             Vue.use(VueRouter);
 
             const router = new VueRouter({
@@ -42,7 +43,7 @@
                     name: 'Home'
                 }]
             });
-                
+                            
             const vue = new Vue({
                 el: '#app',
                 router,
@@ -53,7 +54,7 @@
                     return {
                         hasClicked: false,
                         hasClicked2: false
-                    }
+                    };
                 }
             });
         </script>

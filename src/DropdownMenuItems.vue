@@ -1,6 +1,4 @@
 <script>
-import { isUndefined } from '@vue-interface/utils';
-
 function appendClass(vnode, str) {
     vnode.data.staticClass = `${vnode.data.staticClass || ''} ${str}`.trim();  
 }
@@ -37,8 +35,8 @@ export default {
                     vnode.data.on = {};
                 }
 
-                const isDropdownItem = vnode.data.staticClass && !vnode.data.staticClass.match(/dropdown-item/);
-                const isDropdownDivider = vnode.data.staticClass && !vnode.data.staticClass.match(/dropdown-divider/);
+                const isDropdownItem = vnode.data.staticClass && vnode.data.staticClass.match(/dropdown-item/);
+                const isDropdownDivider = vnode.data.staticClass && vnode.data.staticClass.match(/dropdown-divider/);
                 
                 vnode.data.on.click = wrap(e => {
                     context.parent.$emit('click-item', e, vnode);
@@ -51,12 +49,12 @@ export default {
                 if(vnode.tag.match(/^h\d$/)) {
                     appendClass(vnode, 'dropdown-header');
                 }
-                else if(vnode.tag === 'hr') {
+                else if(vnode.tag === 'hr' && !isDropdownDivider) {
                     vnode.tag = 'div';
 
                     appendClass(vnode, 'dropdown-divider');
                 }
-                else if(!isDropdownItem && !isDropdownDivider) {
+                else if(!isDropdownItem) {
                     appendClass(vnode, 'dropdown-item');
                 }
             });
