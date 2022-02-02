@@ -3,10 +3,6 @@ const plugin = require('tailwindcss/plugin');
 const colors = require('tailwindcss/colors');
 const defaultVariations = require('@vue-interface/tailwindcss/defaultVariations');
 
-function darken(color, ...args) {
-    return Color(color).darken(...args).hex();
-}
-
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
         ':root': {

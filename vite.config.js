@@ -1,3 +1,4 @@
+import path from 'path';
 import { defineConfig } from 'vite';
 import { createVuePlugin } from 'vite-plugin-vue2';
 import { name } from './package.json';
@@ -9,7 +10,7 @@ const filename = name.split('/')[1];
 export default defineConfig({
     build: {
         lib: {
-            entry: 'index.js',
+            entry: path.resolve(__dirname, 'index.js'),
             name: pascalCase(filename),
             fileName: (format) => `${filename}.${format}.js`,
         },
