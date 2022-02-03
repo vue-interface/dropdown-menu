@@ -41,6 +41,7 @@
   },
   "homepage": "https://github.com/vue-interface/dropdown-menu/docs#readme",
   "dependencies": {
+    "@vue-interface/variant": "^1.1.7",
     "vue": "^2.6.12"
   },
   "devDependencies": {
