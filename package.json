@@ -3,7 +3,8 @@
   "version": "1.0.6",
   "description": "A Vue dropdown menu component.",
   "files": [
-    "dist"
+    "dist",
+    "tailwindcss"
   ],
   "main": "./dist/dropdown-menu.umd.js",
   "module": "./dist/dropdown-menu.es.js",
