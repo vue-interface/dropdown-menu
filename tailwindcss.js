@@ -1,7 +1,7 @@
 const Color = require('color');
 const plugin = require('tailwindcss/plugin');
 const colors = require('tailwindcss/colors');
-const defaultVariations = require('@vue-interface/tailwindcss/defaultVariations');
+const variations = require('@vue-interface/variant/tailwindcss/variations');
 
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
@@ -274,7 +274,7 @@ module.exports = plugin(function({ addComponents, theme }) {
 
                 active: {
                     color: theme('colors.white', colors.white),
-                    backgroundColor: theme('interface.variations.primary', defaultVariations.primary),
+                    backgroundColor: theme('interface.variations.primary', variations.primary),
                 },
 
                 disabled: {
