@@ -13,10 +13,6 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "watch": "npm run serve",
-    "serve": "vue-cli-service build --target lib --name=DropdownMenu ./main.vue --watch",
-    "lint": "vue-cli-service lint",
-    "fix": "vue-cli-service lint --fix",
     "pre-release": "npm run build; git add . -A; git commit -m 'pre-release commit'",
     "release-patch": "npm run pre-release && npm version patch -m \"%s\" && npm run release;",
     "release-minor": "npm run pre-release && npm version minor -m \"%s\" && npm run release;",
@@ -43,7 +39,8 @@
   "homepage": "https://github.com/vue-interface/dropdown-menu/docs#readme",
   "dependencies": {
     "@vue-interface/variant": "^1.1.7",
-    "vue": "^2.6.12"
+    "color": "^4.2.0",
+    "vue": "^2.6.14"
   },
   "devDependencies": {
     "@rollup/plugin-babel": "^5.3.0",
@@ -51,7 +48,6 @@
     "babel-eslint": "^10.1.0",
     "babel-preset-vue": "^2.0.2",
     "change-case": "^4.1.2",
-    "color": "^4.2.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "pascalcase": "^2.0.0",
