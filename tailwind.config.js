@@ -1,7 +1,6 @@
 module.exports = {
     content: [
-        "./index.html",
-        "./src/**/*.{vue,js,ts,jsx,tsx}",
+        "./index.html"
     ],
     theme: {
         extend: {},
@@ -9,4 +8,7 @@ module.exports = {
     plugins: [
         require('./tailwindcss')
     ],
+    safelist: [
+        ...require('./tailwindcss/safelist')()
+    ]
 };

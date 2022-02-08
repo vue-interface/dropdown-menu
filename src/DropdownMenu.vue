@@ -1,6 +1,6 @@
 <template>
     <div
-        class="dropdown-menu mb-3"
+        class="dropdown-menu"
         :aria-labelledby="$attrs.id"
         :class="{
             'dropdown-menu-left': align === 'left',

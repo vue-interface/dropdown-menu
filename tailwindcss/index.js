@@ -5,38 +5,38 @@ const variations = require('@vue-interface/variant/tailwindcss/variations');
 
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
-        ':root': {
-            '--dropdown-menu-z-index': theme('dropdownMenu.zIndex'),
-            '--dropdown-menu-min-width': theme('dropdownMenu.minWidth'),
-            '--dropdown-menu-padding-y': theme('dropdownMenu.paddingY'),
-            '--dropdown-menu-spacer': theme('dropdownMenu.spacer'),
-            '--dropdown-menu-font-size': theme('dropdownMenu.fontSize'),
-            '--dropdown-menu-color': theme('dropdownMenu.color'),
-            '--dropdown-menu-background-color': theme('dropdownMenu.backgroundColor'),
-            '--dropdown-menu-border-color': theme('dropdownMenu.borderColor'),
-            '--dropdown-menu-border-radius': theme('dropdownMenu.borderRadius'),
-            '--dropdown-menu-border-width': theme('dropdownMenu.borderWidth'),
-            '--dropdown-menu-box-shadow': theme('dropdownMenu.boxShadow'),
+        // ':root': {
+        //     '--dropdown-menu-z-index': theme('dropdownMenu.zIndex'),
+        //     '--dropdown-menu-min-width': theme('dropdownMenu.minWidth'),
+        //     '--dropdown-menu-padding-y': theme('dropdownMenu.paddingY'),
+        //     '--dropdown-menu-spacer': theme('dropdownMenu.spacer'),
+        //     '--dropdown-menu-font-size': theme('dropdownMenu.fontSize'),
+        //     '--dropdown-menu-color': theme('dropdownMenu.color'),
+        //     '--dropdown-menu-background-color': theme('dropdownMenu.backgroundColor'),
+        //     '--dropdown-menu-border-color': theme('dropdownMenu.borderColor'),
+        //     '--dropdown-menu-border-radius': theme('dropdownMenu.borderRadius'),
+        //     '--dropdown-menu-border-width': theme('dropdownMenu.borderWidth'),
+        //     '--dropdown-menu-box-shadow': theme('dropdownMenu.boxShadow'),
             
-            '--dropdown-menu-inner-border-radius': theme('dropdownMenu.inner.borderRadius'),
+        //     '--dropdown-menu-inner-border-radius': theme('dropdownMenu.inner.borderRadius'),
 
-            '--dropdown-menu-divider-background-color': theme('dropdownMenu.divider.backgroundColor'),
+        //     '--dropdown-menu-divider-background-color': theme('dropdownMenu.divider.backgroundColor'),
             
-            '--dropdown-menu-link-color': theme('dropdownMenu.link.color'),
+        //     '--dropdown-menu-link-color': theme('dropdownMenu.link.color'),
 
-            '--dropdown-menu-link-hover-color': theme('dropdownMenu.link.hover.color'),
-            '--dropdown-menu-link-hover-background-color': theme('dropdownMenu.link.hover.backgroundColor'),
+        //     '--dropdown-menu-link-hover-color': theme('dropdownMenu.link.hover.color'),
+        //     '--dropdown-menu-link-hover-background-color': theme('dropdownMenu.link.hover.backgroundColor'),
                 
-            '--dropdown-menu-link-active-color': theme('dropdownMenu.link.active.color'),
-            '--dropdown-menu-link-active-background-color': theme('dropdownMenu.link.active.backgroundColor'),
+        //     '--dropdown-menu-link-active-color': theme('dropdownMenu.link.active.color'),
+        //     '--dropdown-menu-link-active-background-color': theme('dropdownMenu.link.active.backgroundColor'),
 
-            '--dropdown-menu-link-disabled-color': theme('dropdownMenu.link.disabled.color'),
+        //     '--dropdown-menu-link-disabled-color': theme('dropdownMenu.link.disabled.color'),
             
-            '--dropdown-menu-item-padding-x': theme('dropdownMenu.item.paddingX'),
+        //     '--dropdown-menu-item-padding-x': theme('dropdownMenu.item.paddingX'),
 
-            '--dropdown-menu-header-color': theme('dropdownMenu.header.color'),
-            '--dropdown-menu-header-padding-y': theme('dropdownMenu.header.paddingY')
-        },
+        //     '--dropdown-menu-header-color': theme('dropdownMenu.header.color'),
+        //     '--dropdown-menu-header-padding-y': theme('dropdownMenu.header.paddingY')
+        // },
 
         // The dropdown wrapper (`<div>`)
         '.dropup, .dropright, .dropdown, .dropleft': {
@@ -67,7 +67,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             display: 'none', // none by default, but block on "open" of the menu
             minWidth: theme('dropdownMenu.minWidth'),
             padding: `${theme('dropdownMenu.paddingY')} 0`,
-            margin: `${theme('dropdownMenu.spacer')} 0 0`, // override default ul
+            // margin: `${theme('dropdownMenu.spacer')} 0 0`, // override default ul
             fontSize: theme('dropdownMenu.fontSize'),
             color: theme('dropdownMenu.color'),
             textAlign: 'left', // Ensures proper alignment if parent has it changed (e.g., modal footer)
@@ -92,7 +92,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             top: 'auto',
             bottom: '100%',
             marginTop: 0,
-            marginBottom: theme('dropdownMenu.spacer')
+            // marginBottom: theme('dropdownMenu.spacer')
         },
     
         '.dropup .dropdown-toggle::after': theme('dropdownMenu.enableCarets') ? {
@@ -111,7 +111,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             right: 'auto',
             left: '100%',
             marginTop: 0,
-            marginLeft: theme('dropdownMenu.spacer')
+            // marginLeft: theme('dropdownMenu.spacer')
         },
     
         '.dropright .dropdown-toggle::after': theme('dropdownMenu.enableCarets') ? {
@@ -131,7 +131,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             right: '100%',
             left: 'auto',
             marginTop: 0,
-            marginRight: theme('dropdownMenu.spacer')
+            // marginRight: theme('dropdownMenu.spacer')
         },
           
         '.dropleft .dropdown-toggle::after': {
@@ -200,17 +200,18 @@ module.exports = plugin(function({ addComponents, theme }) {
         
         // Dropdown section headers
         '.dropdown-header': {
-            display: 'block',
-            padding: `${theme('dropdownMenu.paddingY')} ${theme('dropdownMenu.item.paddingX')}`,
+            display: theme('dropdownMenu.header.display'),
+            padding: `${theme('dropdownMenu.header.paddingY')} ${theme('dropdownMenu.header.paddingX')}`,
             marginBottom: 0, // for use with heading elements
-            fontSize: '.875rem',
+            fontSize: theme('dropdownMenu.header.fontSize'),
+            fontWeight: theme('dropdownMenu.header.fontWeight'),
             color: theme('dropdownMenu.header.color'),
             whiteSpace: 'nowrap' // as with > li > a
         },
         
         // Dropdown text
         '.dropdown-item-text': {
-            display: 'block',
+            display: theme('dropdownMenu.item.display'),
             padding: `${theme('dropdownMenu.item.paddingY')} ${theme('dropdownMenu.item.paddingX')}`,
             color: theme('dropdownMenu.link.color'),
         },
@@ -283,12 +284,17 @@ module.exports = plugin(function({ addComponents, theme }) {
             },
 
             item: {
+                display: 'block',
                 paddingY: '.25rem',
                 paddingX: '1rem',
             },
 
             header: {
                 color: theme('colors.gray.500', colors.gray[500]),
+                display: 'block',
+                fontSize: '.875rem',
+                fontWeight: 'bold',
+                paddingX: '.5rem',
                 paddingY: '.5rem'
             }
         })

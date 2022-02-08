@@ -108,7 +108,7 @@ var render = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
-  return _c("div", { staticClass: "dropdown-menu mb-3", class: {
+  return _c("div", { staticClass: "dropdown-menu", class: {
     "dropdown-menu-left": _vm.align === "left",
     "dropdown-menu-right": _vm.align === "right",
     "show": _vm.show

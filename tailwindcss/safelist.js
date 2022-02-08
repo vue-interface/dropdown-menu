@@ -1,0 +1,15 @@
+module.exports = () => ([
+    'dropdown-divider',
+    'dropdown-header',
+    'dropdown-item',
+    'dropdown-item-text',
+    'dropdown-menu',
+    'dropdown-menu-left',
+    'dropdown-menu-right',
+    'dropdown-toggle',
+    'dropdown-toggle-split',
+    'dropup',
+    'dropdown',
+    'dropright',
+    'dropleft',
+]);
