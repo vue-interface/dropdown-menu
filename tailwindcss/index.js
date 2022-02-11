@@ -222,7 +222,7 @@ module.exports = plugin(function({ addComponents, theme }) {
         },
 
         '.dropdown-menu-right': {
-            right: 0,
+            // right: 0,
             left: 'auto'
         }
     };
