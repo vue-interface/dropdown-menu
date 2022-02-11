@@ -86,7 +86,7 @@ const __vue2_script$1 = {
       } else if (vnode.tag === "hr" && !isDropdownDivider) {
         vnode.tag = "div";
         appendClass(vnode, "dropdown-divider");
-      } else if (!isDropdownItem) {
+      } else if (!isDropdownItem && !isDropdownDivider) {
         appendClass(vnode, "dropdown-item");
       }
     });
