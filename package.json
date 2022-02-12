@@ -3,6 +3,7 @@
   "version": "1.0.11",
   "description": "A Vue dropdown menu component.",
   "files": [
+    "index.js",
     "dist",
     "src",
     "tailwindcss"
