@@ -54,7 +54,7 @@ export default {
 
                     appendClass(vnode, 'dropdown-divider');
                 }
-                else if(!isDropdownItem && !isDropdownDivider) {
+                else if(!isDropdownItem && !) {
                     appendClass(vnode, 'dropdown-item');
                 }
             });
