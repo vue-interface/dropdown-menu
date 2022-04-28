@@ -275,7 +275,7 @@ module.exports = plugin(function({ addComponents, theme }) {
 
                 active: {
                     color: theme('colors.white', colors.white),
-                    backgroundColor: theme('interface.variations.primary', variations.primary),
+                    backgroundColor: theme('variations.primary', variations.primary),
                 },
 
                 disabled: {
