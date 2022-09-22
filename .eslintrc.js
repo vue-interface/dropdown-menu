@@ -1,19 +1,27 @@
 module.exports = {
+    env: {
+        browser: true,
+        es2021: true
+    },
     extends: [
-        'plugin:vue/recommended'
+        'plugin:vue/vue3-recommended',
+    ],
+    overrides: [
     ],
     parserOptions: {
-        'parser': 'babel-eslint'
+        ecmaVersion: 'latest',
+        sourceType: 'module',
     },
-    // add your custom rules here
+    plugins: [
+        'vue'
+    ],
     rules: {
         'vue/no-v-html': 0,
         'vue/require-default-prop': 0,
         "vue/max-attributes-per-line": ["error", {
             "singleline": 5,
             "multiline": {
-                "max": 1,
-                "allowFirstLine": true
+                "max": 1
             }
         }],
         "vue/html-indent": ["error", 4, {

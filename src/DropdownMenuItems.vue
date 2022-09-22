@@ -1,6 +1,8 @@
 <script>
+import { h } from 'vue';
+
 function appendClass(vnode, str) {
-    vnode.data.staticClass = `${vnode.data.staticClass || ''} ${str}`.trim();  
+    vnode.props.class = `${vnode.props.class || ''} ${str}`.trim();
 }
 
 function wrap(wrapper, fn) {
@@ -16,51 +18,50 @@ function wrap(wrapper, fn) {
 }
 
 function listener(vnode, key) {
-    return vnode.data.on[key] || (
-        vnode.componentOptions &&
-        vnode.componentOptions.listeners &&
+    return vnode.attrs.on[key] || (
+        vnode.type &&
+        vnode.type.listeners &&
         vnode.componentOptions.listeners[key]
     );
 }
 
-export default {
-    functional: true,
+const DropdownMenuItems = (props, context) => {
+    const children = context.slots.default()[0].children;
 
-    render(h, context) {
-        context.children.filter(vnode => !!vnode.tag)
-            .forEach((vnode, i) => {
-                vnode.data = Object.assign({staticClass: undefined}, vnode.data);
-                
-                if(!vnode.data.on) {
-                    vnode.data.on = {};
-                }
+    children.forEach(vnode => {
+        vnode.props = Object.assign({ class: undefined }, vnode.props);
+        vnode.attrs = Object.assign({}, vnode.attrs);
 
-                const isDropdownItem = vnode.data.staticClass && vnode.data.staticClass.match(/dropdown-item/);
-                const isDropdownDivider = vnode.data.staticClass && vnode.data.staticClass.match(/dropdown-divider/);
-                
-                vnode.data.on.click = wrap(e => {
-                    context.parent.$emit('click-item', e, vnode);
-                }, listener(vnode, 'click'));
+        if(!vnode.attrs.on) {
+            vnode.attrs.on = {};
+        }
 
-                vnode.data.on.blur = wrap(e => {
-                    context.parent.$emit('blur-item', e, vnode);
-                }, listener(vnode, 'blur'));
+        const isDropdownItem = vnode.props.class && vnode.props.class.match(/dropdown-item/);
+        const isDropdownDivider = vnode.props.class && vnode.props.class.match(/dropdown-divider/);
 
-                if(vnode.tag.match(/^h\d$/)) {
-                    appendClass(vnode, 'dropdown-header');
-                }
-                else if(vnode.tag === 'hr' && !isDropdownDivider) {
-                    vnode.tag = 'div';
+        vnode.attrs.on.click = wrap(e => {
+            context.parent.$emit('click-item', e, vnode);
+        }, listener(vnode, 'click'));
 
-                    appendClass(vnode, 'dropdown-divider');
-                }
-                else if(!isDropdownItem && !isDropdownDivider) {
-                    appendClass(vnode, 'dropdown-item');
-                }
-            });
+        vnode.attrs.on.blur = wrap(e => {
+            context.parent.$emit('blur-item', e, vnode);
+        }, listener(vnode, 'blur'));
 
-        return context.children;
-    }
+        if(typeof vnode.type === 'string' && vnode.type.match(/^h\d$/)) {
+            appendClass(vnode, 'dropdown-header');
+        }
+        else if(vnode.type === 'hr' && !isDropdownDivider) {
+            vnode.type = 'div';
 
+            appendClass(vnode, 'dropdown-divider');
+        }
+        else if(!isDropdownItem && !isDropdownDivider) {
+            appendClass(vnode, 'dropdown-item');
+        }
+    });
+
+    return h('div', {}, children);
 };
+
+export default DropdownMenuItems;
 </script>

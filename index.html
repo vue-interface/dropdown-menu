@@ -14,7 +14,7 @@
             <span v-if="hasClicked">Item #4 was clicked!</span>
 
             <div class="dropdown position-relative">
-                <dropdown-menu :show="true" :style="{'position': 'relative', 'float': 'none'}">
+                <dropdown-menu :show="true">
                     <router-link :to="{name: 'Home'}" @click="hasClicked = true">Item #1</router-link>
                     <h5>Some Header</h5>
                     <a href="#" class="test" @click="hasClicked = true">Item #2</a>
@@ -29,24 +29,20 @@
 
         <script type="module">
             import './index.css';
-            import Vue from 'vue/dist/vue';
-            import VueRouter from 'vue-router';
+            import { createApp } from 'vue/dist/vue.esm-bundler';
+            import { createRouter, createWebHistory } from 'vue-router';
             import { DropdownMenu } from './index.js';
-            
-            Vue.config.devtools = false;
-            Vue.config.productionTip = false;
-            Vue.use(VueRouter);
 
-            const router = new VueRouter({
+            const router = createRouter({
+                history: createWebHistory(),
                 routes: [{
                     path: '/test',
-                    name: 'Home'
+                    name: 'Home',
+                    component: {}
                 }]
             });
                             
-            const vue = new Vue({
-                el: '#app',
-                router,
+            const app = createApp({
                 components: {
                     DropdownMenu
                 },
@@ -56,7 +52,9 @@
                         hasClicked2: false
                     };
                 }
-            });
+            })
+            .use(router)
+            .mount('#app');
         </script>
     </body>
 </html>
