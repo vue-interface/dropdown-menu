@@ -25,10 +25,18 @@ function listener(vnode, key) {
     );
 }
 
-const DropdownMenuItems = (props, context) => {
-    const children = context.slots.default()[0].children;
+function isFragment(vnode) {
+    // We'll go ahead and assume that if the type is a symbol, then the vnode is fragment.
+    // This may be a faulty assumption; if it is, it'll need to be changed.
+    return vnode && vnode.type && (vnode.type === 'fragment' || typeof vnode.type === 'symbol');
+}
 
-    children.forEach(vnode => {
+function changeMenuItems(items) {
+    for(const vnode of items) {
+        if(isFragment(vnode)) {
+            return changeMenuItems(vnode.children);
+        }
+
         vnode.props = Object.assign({ class: undefined }, vnode.props);
         vnode.attrs = Object.assign({}, vnode.attrs);
 
@@ -58,10 +66,12 @@ const DropdownMenuItems = (props, context) => {
         else if(!isDropdownItem && !isDropdownDivider) {
             appendClass(vnode, 'dropdown-item');
         }
-    });
+    }
 
-    return h('div', {}, children);
-};
+    return items;
+}
+
+const DropdownMenuItems = (props, context) => h('div', {}, changeMenuItems(context.slots.default()));
 
 export default DropdownMenuItems;
 </script>
