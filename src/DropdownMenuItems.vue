@@ -25,12 +25,10 @@ function listener(vnode, key) {
     );
 }
 
-function menuItemsFor(parent) {
-    const children = parent.children;
-
-    for(const vnode of children) {
+function changeMenuItems(items) {
+    for(const vnode of items) {
         if(vnode && vnode.type && (vnode.type === 'fragment' || typeof vnode.type === 'symbol' || vnode.type instanceof Symbol)) {
-            return menuItemsFor(vnode);
+            return changeMenuItems(vnode.children);
         }
 
         vnode.props = Object.assign({ class: undefined }, vnode.props);
@@ -64,12 +62,10 @@ function menuItemsFor(parent) {
         }
     }
 
-    return h('div', {}, children);
+    return items;
 }
 
-const DropdownMenuItems = (props, context) => {
-    return menuItemsFor(context.slots.default()[0]);
-};
+const DropdownMenuItems = (props, context) => h('div', {}, changeMenuItems(context.slots.default()));
 
 export default DropdownMenuItems;
 </script>
