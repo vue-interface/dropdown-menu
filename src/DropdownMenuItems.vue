@@ -25,9 +25,15 @@ function listener(vnode, key) {
     );
 }
 
+function isFragment(vnode) {
+    // We'll go ahead and assume that if the type is a symbol, then the vnode is fragment.
+    // This may be a faulty assumption; if it is, it'll need to be changed.
+    return vnode && vnode.type && (vnode.type === 'fragment' || typeof vnode.type === 'symbol');
+}
+
 function changeMenuItems(items) {
     for(const vnode of items) {
-        if(vnode && vnode.type && (vnode.type === 'fragment' || typeof vnode.type === 'symbol' || vnode.type instanceof Symbol)) {
+        if(isFragment(vnode)) {
             return changeMenuItems(vnode.children);
         }
 

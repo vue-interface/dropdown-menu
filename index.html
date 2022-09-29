@@ -14,16 +14,18 @@
             <span v-if="hasClicked">Item #4 was clicked!</span>
 
             <div class="dropdown position-relative">
-                <dropdown-menu :show="true">
-                    <router-link :to="{name: 'Home'}" @click="hasClicked = true">Item #1</router-link>
-                    <h5>Some Header</h5>
-                    <a href="#" class="test" @click="hasClicked = true">Item #2</a>
-                    <h5 class="test">Some Header</h5>
-                    <a href="#" class="active">Item #3</a>
-                    <a href="#">Item #4</a>
-                    <hr />
-                    <a href="http://google.com" class="dropdown-item">Redirect to Google.com</a>
-                </dropdown-menu>
+                <fragment>
+                    <dropdown-menu :show="true">
+                        <router-link :to="{name: 'Home'}" @click="hasClicked = true">Item #1</router-link>
+                        <h5>Some Header</h5>
+                        <a href="#" class="test" @click="hasClicked = true">Item #2</a>
+                        <h5 class="test">Some Header</h5>
+                        <a href="#" class="active">Item #3</a>
+                        <a href="#">Item #4</a>
+                        <hr />
+                        <a href="http://google.com" class="dropdown-item">Redirect to Google.com</a>
+                    </dropdown-menu>
+                </fragment>
             </div>
         </div>
 
