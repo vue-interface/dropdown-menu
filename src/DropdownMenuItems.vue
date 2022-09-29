@@ -25,10 +25,14 @@ function listener(vnode, key) {
     );
 }
 
-const DropdownMenuItems = (props, context) => {
-    const children = context.slots.default()[0].children;
+function menuItemsFor(parent) {
+    const children = parent.children;
 
-    children.forEach(vnode => {
+    for(const vnode of children) {
+        if(vnode && vnode.type && vnode.type.toString() === Symbol.for('Fragment').toString()) {
+            return menuItemsFor(vnode);
+        }
+
         vnode.props = Object.assign({ class: undefined }, vnode.props);
         vnode.attrs = Object.assign({}, vnode.attrs);
 
@@ -58,9 +62,13 @@ const DropdownMenuItems = (props, context) => {
         else if(!isDropdownItem && !isDropdownDivider) {
             appendClass(vnode, 'dropdown-item');
         }
-    });
+    }
 
     return h('div', {}, children);
+}
+
+const DropdownMenuItems = (props, context) => {
+    return menuItemsFor(context.slots.default()[0]);
 };
 
 export default DropdownMenuItems;
