@@ -29,7 +29,7 @@ function menuItemsFor(parent) {
     const children = parent.children;
 
     for(const vnode of children) {
-        if(vnode && vnode.type && vnode.type.toString() === Symbol.for('Fragment').toString()) {
+        if(vnode && vnode.type && (vnode.type === 'fragment' || typeof vnode.type === 'symbol' || vnode.type instanceof Symbol)) {
             return menuItemsFor(vnode);
         }
 
