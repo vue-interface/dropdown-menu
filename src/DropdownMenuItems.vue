@@ -1,5 +1,5 @@
 <script>
-import { h } from 'vue';
+import { h, isVNode } from 'vue';
 
 function appendClass(vnode, str) {
     vnode.props.class = `${vnode.props.class || ''} ${str}`.trim();
@@ -24,17 +24,20 @@ function listener(vnode, key) {
         vnode.componentOptions.listeners[key]
     );
 }
-
-function isFragment(vnode) {
-    // We'll go ahead and assume that if the type is a symbol, then the vnode is fragment.
-    // This may be a faulty assumption; if it is, it'll need to be changed.
-    return vnode && vnode.type && (vnode.type === 'fragment' || typeof vnode.type === 'symbol');
+function isDropdownItem(vnode) {
+    return vnode && vnode.type && vnode.type.name === 'DropdownItem';
 }
 
+// function isSymbol(vnode) {
+//     // We'll go ahead and assume that if the type is a symbol, then the vnode is fragment.
+//     // This may be a faulty assumption; if it is, it'll need to be changed.
+//     return vnode && vnode.type && (vnode.type === 'fragment' || typeof vnode.type === 'symbol');
+// }
+
 function changeMenuItems(items) {
-    for(const vnode of items) {
-        if(isFragment(vnode)) {
-            return changeMenuItems(vnode.children);
+    for(const vnode of items[0].children) {
+        if(!isVNode(vnode)) {
+            continue;
         }
 
         vnode.props = Object.assign({ class: undefined }, vnode.props);
