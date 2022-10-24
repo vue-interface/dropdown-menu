@@ -1,4 +1,4 @@
-import { h as d, resolveComponent as m, openBlock as u, createElementBlock as f, normalizeClass as w, createVNode as h, withCtx as y, renderSlot as g } from "vue";
+import { h as d, Fragment as m, resolveComponent as u, openBlock as f, createElementBlock as w, normalizeClass as h, createVNode as g, withCtx as _, renderSlot as y } from "vue";
 function s(e, t) {
   e.props.class = `${e.props.class || ""} ${t}`.trim();
 }
@@ -10,14 +10,9 @@ function i(e, t) {
 function p(e, t) {
   return e.attrs.on[t] || e.type && e.type.listeners && e.componentOptions.listeners[t];
 }
-function _(e) {
-  return e && e.type && (e.type === "fragment" || typeof e.type == "symbol");
-}
 function a(e) {
   for (const t of e) {
-    if (_(t))
-      return a(t.children);
-    t.props = Object.assign({ class: void 0 }, t.props), t.attrs = Object.assign({}, t.attrs), t.attrs.on || (t.attrs.on = {});
+    t.type === m && a(t.children), t.props = Object.assign({ class: void 0 }, t.props), t.attrs = Object.assign({}, t.attrs), t.attrs.on || (t.attrs.on = {});
     const n = t.props.class && t.props.class.match(/dropdown-item/), r = t.props.class && t.props.class.match(/dropdown-divider/);
     t.attrs.on.click = i((o) => {
       context.parent.$emit("click-item", o, t);
@@ -47,28 +42,28 @@ const b = (e, t) => d("div", {}, a(t.slots.default())), $ = b, k = (e, t) => {
     },
     show: Boolean
   }
-}, D = ["aria-labelledby"];
-function I(e, t, n, r, o, M) {
-  const l = m("dropdown-menu-items");
-  return u(), f("div", {
-    class: w(["dropdown-menu", {
+}, v = ["aria-labelledby"];
+function D(e, t, n, r, o, I) {
+  const l = u("dropdown-menu-items");
+  return f(), w("div", {
+    class: h(["dropdown-menu", {
       "dropdown-menu-left": n.align === "left",
       "dropdown-menu-right": n.align === "right",
       show: n.show
     }]),
     "aria-labelledby": e.$attrs.id
   }, [
-    h(l, null, {
-      default: y(() => [
-        g(e.$slots, "default", {
+    g(l, null, {
+      default: _(() => [
+        y(e.$slots, "default", {
           onClick: t[0] || (t[0] = (...c) => e.onItemClick && e.onItemClick(...c))
         })
       ]),
       _: 3
     })
-  ], 10, D);
+  ], 10, v);
 }
-const v = /* @__PURE__ */ k(C, [["render", I]]);
+const O = /* @__PURE__ */ k(C, [["render", D]]);
 export {
-  v as DropdownMenu
+  O as DropdownMenu
 };

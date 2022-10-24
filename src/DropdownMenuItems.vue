@@ -1,5 +1,5 @@
 <script>
-import { h, isVNode } from 'vue';
+import { Fragment, h } from 'vue';
 
 function appendClass(vnode, str) {
     vnode.props.class = `${vnode.props.class || ''} ${str}`.trim();
@@ -25,20 +25,10 @@ function listener(vnode, key) {
     );
 }
 
-function isDropdownItem(vnode) {
-    return vnode && vnode.type && vnode.type.name === 'DropdownItem';
-}
-
-function isFragment(vnode) {
-    // We'll go ahead and assume that if the type is a symbol, then the vnode is fragment.
-    // This may be a faulty assumption; if it is, it'll need to be changed.
-    return vnode && vnode.type && (vnode.type === 'fragment' || typeof vnode.type === 'symbol');
-}
-
-function changeMenuItems(items) {    
+function changeMenuItems(items) {
     for(const vnode of items) {
-        if(isFragment(vnode)) {
-            return changeMenuItems(vnode.children);
+        if(vnode.type === Fragment) {
+            changeMenuItems(vnode.children);
         }
 
         vnode.props = Object.assign({ class: undefined }, vnode.props);
