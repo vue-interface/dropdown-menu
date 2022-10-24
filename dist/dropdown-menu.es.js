@@ -1,36 +1,24 @@
-import { h as d, Fragment as m, resolveComponent as u, openBlock as f, createElementBlock as w, normalizeClass as h, createVNode as g, withCtx as _, renderSlot as y } from "vue";
-function s(e, t) {
-  e.props.class = `${e.props.class || ""} ${t}`.trim();
+import { h as i, Fragment as l, resolveComponent as c, openBlock as m, createElementBlock as f, normalizeClass as u, createVNode as w, withCtx as h, renderSlot as g } from "vue";
+function s(e, o) {
+  e.props.class = `${e.props.class || ""} ${o}`.trim();
 }
-function i(e, t) {
-  return (n) => {
-    typeof t == "function" && t(n), n.cancelBubble || e(n);
-  };
-}
-function p(e, t) {
-  return e.attrs.on[t] || e.type && e.type.listeners && e.componentOptions.listeners[t];
-}
-function a(e) {
-  for (const t of e) {
-    t.type === m && a(t.children), t.props = Object.assign({ class: void 0 }, t.props), t.attrs = Object.assign({}, t.attrs), t.attrs.on || (t.attrs.on = {});
-    const n = t.props.class && t.props.class.match(/dropdown-item/), r = t.props.class && t.props.class.match(/dropdown-divider/);
-    t.attrs.on.click = i((o) => {
-      context.parent.$emit("click-item", o, t);
-    }, p(t, "click")), t.attrs.on.blur = i((o) => {
-      context.parent.$emit("blur-item", o, t);
-    }, p(t, "blur")), typeof t.type == "string" && t.type.match(/^h\d$/) ? s(t, "dropdown-header") : t.type === "hr" && !r ? (t.type = "div", s(t, "dropdown-divider")) : !n && !r && s(t, "dropdown-item");
+function d(e) {
+  for (const o of e) {
+    o.type === l && d(o.children), o.props = Object.assign({ class: void 0 }, o.props), o.attrs = Object.assign({}, o.attrs), o.attrs.on || (o.attrs.on = {});
+    const n = o.props.class && o.props.class.match(/dropdown-item/), t = o.props.class && o.props.class.match(/dropdown-divider/);
+    typeof o.type == "string" && o.type.match(/^h\d$/) ? s(o, "dropdown-header") : o.type === "hr" && !t ? (o.type = "div", s(o, "dropdown-divider")) : !n && !t && s(o, "dropdown-item");
   }
   return e;
 }
-const b = (e, t) => d("div", {}, a(t.slots.default())), $ = b, k = (e, t) => {
+const _ = (e, o) => i("div", {}, d(o.slots.default())), v = _, y = (e, o) => {
   const n = e.__vccOpts || e;
-  for (const [r, o] of t)
-    n[r] = o;
+  for (const [t, r] of o)
+    n[t] = r;
   return n;
 }, C = {
   name: "DropdownMenu",
   components: {
-    DropdownMenuItems: $
+    DropdownMenuItems: v
   },
   props: {
     align: {
@@ -42,28 +30,28 @@ const b = (e, t) => d("div", {}, a(t.slots.default())), $ = b, k = (e, t) => {
     },
     show: Boolean
   }
-}, v = ["aria-labelledby"];
-function D(e, t, n, r, o, I) {
-  const l = u("dropdown-menu-items");
-  return f(), w("div", {
-    class: h(["dropdown-menu", {
+}, D = ["aria-labelledby"];
+function $(e, o, n, t, r, b) {
+  const p = c("dropdown-menu-items");
+  return m(), f("div", {
+    class: u(["dropdown-menu", {
       "dropdown-menu-left": n.align === "left",
       "dropdown-menu-right": n.align === "right",
       show: n.show
     }]),
     "aria-labelledby": e.$attrs.id
   }, [
-    g(l, null, {
-      default: _(() => [
-        y(e.$slots, "default", {
-          onClick: t[0] || (t[0] = (...c) => e.onItemClick && e.onItemClick(...c))
+    w(p, null, {
+      default: h(() => [
+        g(e.$slots, "default", {
+          onClick: o[0] || (o[0] = (...a) => e.onItemClick && e.onItemClick(...a))
         })
       ]),
       _: 3
     })
-  ], 10, v);
+  ], 10, D);
 }
-const O = /* @__PURE__ */ k(C, [["render", D]]);
+const I = /* @__PURE__ */ y(C, [["render", $]]);
 export {
-  O as DropdownMenu
+  I as DropdownMenu
 };
