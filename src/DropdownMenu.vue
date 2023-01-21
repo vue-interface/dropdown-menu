@@ -1,22 +1,23 @@
 <template>
     <div
         class="dropdown-menu"
-        :aria-labelledby="$attrs.id"
+        :aria-labelledby="<string|undefined>$attrs.id"
         :class="{
             'dropdown-menu-left': align === 'left',
             'dropdown-menu-right': align === 'right',
             'show': show
         }">
         <dropdown-menu-items>
-            <slot @click="onItemClick" />
+            <slot />
         </dropdown-menu-items>
     </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import DropdownMenuItems from './DropdownMenuItems.vue';
 
-export default {
+export default defineComponent({
 
     name: 'DropdownMenu',
 
@@ -34,7 +35,7 @@ export default {
         align: {
             type: String,
             default: 'left',
-            validate(value) {
+            validate(value: any) {
                 return ['left', 'right'].indexOf(value.toLowerCase()) !== -1;
             }
         },
@@ -48,5 +49,5 @@ export default {
 
     }
 
-};
+});
 </script>
