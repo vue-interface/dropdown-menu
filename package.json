@@ -16,8 +16,8 @@
       "require": "./dist/dropdown-menu.umd.cjs",
       "types": "./dist/index.d.ts"
     },
-    "./tailwind": "./tailwindcss/index.js",
-    "./tailwind/safelist": "./tailwindcss/safelist.js"
+    "./tailwindcss": "./tailwindcss/index.js",
+    "./tailwindcss/safelist": "./tailwindcss/safelist.js"
   },
   "browserslist": "last 2 versions, > 0.5%, ie >= 11",
   "scripts": {
