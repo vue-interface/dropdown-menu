@@ -1,30 +1,16 @@
-import { h as c, defineComponent as f, resolveComponent as m, openBlock as u, createElementBlock as w, normalizeClass as h, createVNode as y, withCtx as b, renderSlot as g } from "vue";
-function p(t, o) {
-  t.props.class = `${t.props.class || ""} ${o}`.trim();
+import { h as a, Fragment as i, defineComponent as l, resolveComponent as c, openBlock as f, createElementBlock as m, normalizeClass as u, createVNode as w, withCtx as h, renderSlot as g } from "vue";
+function s(e, o) {
+  e.props.class = `${e.props.class || ""} ${o}`.trim();
 }
-function i(t, o) {
-  return (e) => {
-    typeof o == "function" && o(e), e.cancelBubble || t(e);
-  };
-}
-function a(t, o) {
-  return t.attrs.on[o] || t.type && t.type.listeners && t.componentOptions.listeners[o];
-}
-function l(t, o) {
-  for (const e of t) {
-    if (e && e.type && (e.type === "fragment" || typeof e.type == "symbol" || e.type instanceof Symbol))
-      return l(e.children, o);
-    e.props = Object.assign({ class: void 0 }, e.props), e.attrs = Object.assign({}, e.attrs), e.attrs.on || (e.attrs.on = {});
-    const r = e.props.class && e.props.class.match(/dropdown-item/), n = e.props.class && e.props.class.match(/dropdown-divider/);
-    e.attrs.on.click = i((s) => {
-      o.parent.$emit("click-item", s, e);
-    }, a(e, "click")), e.attrs.on.blur = i((s) => {
-      o.parent.$emit("blur-item", s, e);
-    }, a(e, "blur")), typeof e.type == "string" && e.type.match(/^h\d$/) ? p(e, "dropdown-header") : e.type === "hr" && !n ? (e.type = "div", p(e, "dropdown-divider")) : !r && !n && p(e, "dropdown-item");
+function p(e) {
+  for (const o of e) {
+    o.type === i && p(o.children), o.props = Object.assign({ class: void 0 }, o.props), o.attrs = Object.assign({}, o.attrs), o.attrs.on || (o.attrs.on = {});
+    const t = o.props.class && o.props.class.match(/dropdown-item/), n = o.props.class && o.props.class.match(/dropdown-divider/);
+    typeof o.type == "string" && o.type.match(/^h\d$/) ? s(o, "dropdown-header") : o.type === "hr" && !n ? (o.type = "div", s(o, "dropdown-divider")) : !t && !n && s(o, "dropdown-item");
   }
-  return t;
+  return e;
 }
-const _ = (t, o) => c("div", {}, l(o.slots.default(), o)), $ = f({
+const _ = (e, o) => a("div", {}, p(o.slots.default())), v = l({
   name: "DropdownMenu",
   components: {
     DropdownMenuItems: _
@@ -38,8 +24,8 @@ const _ = (t, o) => c("div", {}, l(o.slots.default(), o)), $ = f({
     align: {
       type: String,
       default: "left",
-      validate(t) {
-        return ["left", "right"].indexOf(t.toLowerCase()) !== -1;
+      validate(e) {
+        return ["left", "right"].indexOf(e.toLowerCase()) !== -1;
       }
     },
     /**
@@ -49,31 +35,31 @@ const _ = (t, o) => c("div", {}, l(o.slots.default(), o)), $ = f({
      */
     show: Boolean
   }
-}), v = (t, o) => {
-  const e = t.__vccOpts || t;
-  for (const [r, n] of o)
-    e[r] = n;
-  return e;
-}, C = ["aria-labelledby"];
-function D(t, o, e, r, n, s) {
-  const d = m("dropdown-menu-items");
-  return u(), w("div", {
-    class: h(["dropdown-menu", {
-      "dropdown-menu-left": t.align === "left",
-      "dropdown-menu-right": t.align === "right",
-      show: t.show
+}), y = (e, o) => {
+  const t = e.__vccOpts || e;
+  for (const [n, r] of o)
+    t[n] = r;
+  return t;
+}, $ = ["aria-labelledby"];
+function b(e, o, t, n, r, C) {
+  const d = c("dropdown-menu-items");
+  return f(), m("div", {
+    class: u(["dropdown-menu", {
+      "dropdown-menu-left": e.align === "left",
+      "dropdown-menu-right": e.align === "right",
+      show: e.show
     }]),
-    "aria-labelledby": t.$attrs.id
+    "aria-labelledby": e.$attrs.id
   }, [
-    y(d, null, {
-      default: b(() => [
-        g(t.$slots, "default")
+    w(d, null, {
+      default: h(() => [
+        g(e.$slots, "default")
       ]),
       _: 3
     })
-  ], 10, C);
+  ], 10, $);
 }
-const O = /* @__PURE__ */ v($, [["render", D]]);
+const M = /* @__PURE__ */ y(v, [["render", b]]);
 export {
-  O as DropdownMenu
+  M as DropdownMenu
 };

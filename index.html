@@ -6,25 +6,51 @@
         <title>DropdownMenu</title>
     </head>
     <body>
-        <div id="app" class="container mx-auto">
+        <div id="app" class="">
             <h1 class="text-4xl mb-6">dropdown-menu</h1>
 
             <h3 class="text-2xl mb-3">Basic Usage</h3>
 
-            <span v-if="hasClicked">Item #4 was clicked!</span>
+            <span>{{ item }} was clicked!</span>
 
-            <div class="dropdown position-relative">
+            <div class="dropdown">
                 <dropdown-menu :show="true">
-                    <router-link :to="{name: 'Home'}" @click="hasClicked = true">Item #1</router-link>
-                    <h5>Some Header</h5>
-                    <a href="#" class="test" @click="hasClicked = true">Item #2</a>
-                    <h5 class="test">Some Header</h5>
-                    <a href="#" class="active">Item #3</a>
-                    <a href="#">Item #4</a>
+                    <h5>Vue Router</h5>
+                    <router-link :to="{path: 'home'}">Home</router-link>
+                    <router-link :to="{path: 'about'}">About</router-link>
+                    <router-link :to="{path: 'contact'}">Contact</router-link>
+                    <h5>Links</h5>
+                    <a href="#" class="active" @click="item = 'Item #2'">Item #2</a>
+                    <a href="#" @click="item = 'Item #3'">Item #3</a>
                     <hr />
-                    <a href="http://google.com" class="dropdown-item">Redirect to Google.com</a>
+                    <a href="#" @click="item = 'Item #4'">Item #4</a>
+                    <h1> Heading 1 </h1>
+                    <h2> Heading 2 </h2>
+                    <h3> Heading 3 </h3>
+                    <h4> Heading 4 </h4>
+                    <h5> Heading 5 </h5>
+                    <h6> Heading 6 </h6>
+                    <p><i> italic text </i></p>
+                    <p><b>bold text </b></p>
+                    <!-- works with comments -->
+                    <!-- works with v-if="false" -->
+                    <a v-if="false">false</a>
+                    <p><em> strong text </em></p>
+                    <p><sub> subscripted text </sub></p>
+                    <p><sup> superscripted text </sup></p>
+                    <p><small> small text </small></p>
+                    <p><del> deleted text </del></p>
+                    <p><ins> inserted text </ins></p>
+                    <p><blockquote> quoted text </blockquote></p>
+                    <p><q> short quoted text </q></p>
+                    <p><cite> cited text </cite></p>
+                    <p><address> address </address></p>
+                    <p><abbr> inserted text </abbr></p>
+                    <p><code> code snippet </code></p>
+                    <p><mark> marked text </mark></p>
                 </dropdown-menu>
             </div>
+
         </div>
 
         <script type="module">
@@ -35,11 +61,10 @@
 
             const router = createRouter({
                 history: createWebHistory(),
-                routes: [{
-                    path: '/test',
-                    name: 'Home',
-                    component: {}
-                }]
+                routes: [
+                    // catch all route
+                    { path: '/:pathMatch(.*)*', name: 'Any', component: { template: '<div>Any</div>' } },
+                ]
             });
                             
             const app = createApp({
@@ -48,8 +73,7 @@
                 },
                 data() {
                     return {
-                        hasClicked: false,
-                        hasClicked2: false
+                        item: ''
                     };
                 }
             })
