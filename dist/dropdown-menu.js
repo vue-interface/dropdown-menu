@@ -10,10 +10,10 @@ function p(e) {
   }
   return e;
 }
-const _ = (e, o) => a("div", {}, p(o.slots.default())), v = l({
+const v = (e, o) => a("div", {}, p(o.slots.default())), y = l({
   name: "DropdownMenu",
   components: {
-    DropdownMenuItems: _
+    DropdownMenuItems: v
   },
   props: {
     /**
@@ -35,14 +35,14 @@ const _ = (e, o) => a("div", {}, p(o.slots.default())), v = l({
      */
     show: Boolean
   }
-}), y = (e, o) => {
+}), _ = (e, o) => {
   const t = e.__vccOpts || e;
   for (const [n, r] of o)
     t[n] = r;
   return t;
 }, $ = ["aria-labelledby"];
-function b(e, o, t, n, r, C) {
-  const d = c("dropdown-menu-items");
+function D(e, o, t, n, r, b) {
+  const d = c("DropdownMenuItems");
   return f(), m("div", {
     class: u(["dropdown-menu", {
       "dropdown-menu-left": e.align === "left",
@@ -59,7 +59,7 @@ function b(e, o, t, n, r, C) {
     })
   ], 10, $);
 }
-const M = /* @__PURE__ */ y(v, [["render", b]]);
+const M = /* @__PURE__ */ _(y, [["render", D]]);
 export {
   M as DropdownMenu
 };

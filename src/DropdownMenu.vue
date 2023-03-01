@@ -1,18 +1,3 @@
-<template>
-    <div
-        class="dropdown-menu"
-        :aria-labelledby="<string|undefined>$attrs.id"
-        :class="{
-            'dropdown-menu-left': align === 'left',
-            'dropdown-menu-right': align === 'right',
-            'show': show
-        }">
-        <dropdown-menu-items>
-            <slot />
-        </dropdown-menu-items>
-    </div>
-</template>
-
 <script lang="ts">
 import { defineComponent } from 'vue';
 import DropdownMenuItems from './DropdownMenuItems.vue';
@@ -51,3 +36,18 @@ export default defineComponent({
 
 });
 </script>
+
+<template>
+    <div
+        class="dropdown-menu"
+        :aria-labelledby="<string|undefined>$attrs.id"
+        :class="{
+            'dropdown-menu-left': align === 'left',
+            'dropdown-menu-right': align === 'right',
+            'show': show
+        }">
+        <DropdownMenuItems>
+            <slot />
+        </DropdownMenuItems>
+    </div>
+</template>

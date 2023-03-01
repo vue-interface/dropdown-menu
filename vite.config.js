@@ -1,4 +1,3 @@
-import { babel } from '@rollup/plugin-babel';
 import vue from '@vitejs/plugin-vue';
 import { pascalCase } from 'change-case';
 import path from 'path';
@@ -29,11 +28,6 @@ export default defineConfig({
                     vue: 'Vue'
                 },
             },
-            plugins: [
-                babel({
-                    babelHelpers: 'bundled'
-                })
-            ]
         },
         watch: !process.env.NODE_ENV && {
             include: [
