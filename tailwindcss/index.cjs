@@ -59,7 +59,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                     // Links, buttons, and more within the dropdown menu
                     //
                     // `<button>`-specific styles are denoted with `// For <button>s`
-                    '.dropdown-item': {
+                    '.dropdown-item, & > :not(.dropdown-header, .dropdown-item-text, .dropdown-item-plain)': {
                         display: 'block',
                         width: '100%', // For `<button>`s
                         padding: '.25rem 1rem',
