@@ -1,53 +1,23 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
-import DropdownMenuItems from './DropdownMenuItems.vue';
+<script setup lang="ts">
+export type DropdownMenuProps = {
+    align: 'left' | 'right',
+    show?: boolean
+};
 
-export default defineComponent({
-
-    name: 'DropdownMenu',
-
-    components: {
-        DropdownMenuItems
-    },
-
-    props: {
-
-        /**
-         * Display the dropdown menu aligned left or right
-         *
-         * @property String
-         */
-        align: {
-            type: String,
-            default: 'left',
-            validate(value: any) {
-                return ['left', 'right'].indexOf(value.toLowerCase()) !== -1;
-            }
-        },
-
-        /**
-         * The default visibility of the dropdown menu.
-         *
-         * @property Object
-         */
-        show: Boolean
-
-    }
-
-});
+defineProps<DropdownMenuProps>();
 </script>
 
 <template>
-    <div
-        class="dropdown-menu"
-        :aria-labelledby="<string|undefined>$attrs.id"
-        :class="{
-            'dropdown-menu-left': align === 'left',
-            'dropdown-menu-right': align === 'right',
-            'show': show
-        }">
-        <DropdownMenuItems>
+    <div class="dropdown">
+        <div
+            class="dropdown-menu"
+            :aria-labelledby="($attrs.id as string|undefined)"
+            :class="{
+                'dropdown-menu-left': align === 'left',
+                'dropdown-menu-right': align === 'right',
+                'show': show
+            }">
             <slot />
-        </DropdownMenuItems>
+        </div>
     </div>
 </template>

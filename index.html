@@ -13,63 +13,45 @@
 
             <span>{{ item }} was clicked!</span>
 
-            <div class="dropdown">
-                <dropdown-menu :show="true">
-                    <h5>Vue Router</h5>
-                    <router-link :to="{path: 'home'}">Home</router-link>
-                    <router-link :to="{path: 'about'}">About</router-link>
-                    <router-link :to="{path: 'contact'}">Contact</router-link>
-                    <h5>Links</h5>
-                    <a href="#" class="active" @click="item = 'Item #2'">Item #2</a>
-                    <a href="#" @click="item = 'Item #3'">Item #3</a>
-                    <hr />
-                    <a href="#" @click="item = 'Item #4'">Item #4</a>
-                    <h1> Heading 1 </h1>
-                    <h2> Heading 2 </h2>
-                    <h3> Heading 3 </h3>
-                    <h4> Heading 4 </h4>
-                    <h5> Heading 5 </h5>
-                    <h6> Heading 6 </h6>
-                    <p><i> italic text </i></p>
-                    <p><b>bold text </b></p>
-                    <!-- works with comments -->
-                    <!-- works with v-if="false" -->
-                    <a v-if="false">false</a>
-                    <p><em> strong text </em></p>
-                    <p><sub> subscripted text </sub></p>
-                    <p><sup> superscripted text </sup></p>
-                    <p><small> small text </small></p>
-                    <p><del> deleted text </del></p>
-                    <p><ins> inserted text </ins></p>
-                    <p><blockquote> quoted text </blockquote></p>
-                    <p><q> short quoted text </q></p>
-                    <p><cite> cited text </cite></p>
-                    <p><address> address </address></p>
-                    <p><abbr> inserted text </abbr></p>
-                    <p><code> code snippet </code></p>
-                    <p><mark> marked text </mark></p>
-                </dropdown-menu>
-            </div>
+            <dropdown-menu :show="true">
+                <h5 class="dropdown-header">Vue Router</h5>
+                <h5 class="dropdown-header">Links</h5>
+                <a href="#"  class="dropdown-item active" @click="item = 'Item #2'">Item #2</a>
+                <a href="#" class="dropdown-item" @click="item = 'Item #3'">Item #3</a>
+                <div class="dropdown-item-text">Plain Text</div>
+                <hr class="dropdown-divider" />
+                <a href="#" class="dropdown-item" @click="item = 'Item #4'">Item #4</a>
+                <dropdown-header>Heading Element</dropdown-header>
+                <dropdown-item><i>italic text</i></dropdown-item>
+                <dropdown-item><b>bold text</b></dropdown-item>
+                <a v-if="false" class="dropdown-item">false</a>
+                <dropdown-item><em> strong text </em></dropdown-item>
+                <dropdown-item><sub> subscripted text </sub></dropdown-item>
+                <dropdown-item><sup> superscripted text </sup></dropdown-item>
+                <dropdown-item><small> small text </small></dropdown-item>
+                <dropdown-item><del> deleted text </del></dropdown-item>
+                <dropdown-item><ins> inserted text </ins></dropdown-item>
+                <dropdown-item><blockquote> quoted text </blockquote></dropdown-item>
+                <dropdown-item><q> short quoted text </q></dropdown-item>
+                <dropdown-item><cite> cited text </cite></dropdown-item>
+                <dropdown-item><address> address </address></dropdown-item>
+                <dropdown-item><abbr> inserted text </abbr></dropdown-item>
+                <dropdown-item><code> code snippet </code></dropdown-item>
+                <dropdown-item><mark> marked text </mark></dropdown-item>
+            </dropdown-menu>
 
         </div>
 
         <script type="module">
             import './index.css';
             import { createApp } from 'vue/dist/vue.esm-bundler';
-            import { createRouter, createWebHistory } from 'vue-router';
-            import { DropdownMenu } from './index.js';
-
-            const router = createRouter({
-                history: createWebHistory(),
-                routes: [
-                    // catch all route
-                    { path: '/:pathMatch(.*)*', name: 'Any', component: { template: '<div>Any</div>' } },
-                ]
-            });
-                            
+            import { DropdownHeader, DropdownItem, DropdownMenu } from './index';
+   
             const app = createApp({
                 components: {
-                    DropdownMenu
+                    DropdownMenu,
+                    DropdownItem,
+                    DropdownHeader
                 },
                 data() {
                     return {
@@ -77,7 +59,7 @@
                     };
                 }
             })
-            .use(router)
+            // .use(router)
             .mount('#app');
         </script>
     </body>
