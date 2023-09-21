@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>DropdownMenu</title>
     </head>
-    <body>
+    <body class="dark:bg-neutral-900 dark:text-white">
         <div id="app" class="">
             <h1 class="text-4xl mb-6">dropdown-menu</h1>
 
@@ -18,7 +18,6 @@
                 <h5 class="dropdown-header">Links</h5>
                 <a href="#"  class="dropdown-item active" @click="item = 'Item #2'">Item #2</a>
                 <a href="#" @click="item = 'Item #3'">Item #3</a>
-                <div class="dropdown-item-plain">Unstyled text</a>
                 <div class="dropdown-item-text">Plain Text</div>
                 <hr class="dropdown-divider" />
                 <a href="#" class="dropdown-item" @click="item = 'Item #4'">Item #4</a>
@@ -39,6 +38,7 @@
                 <dropdown-item><abbr> inserted text </abbr></dropdown-item>
                 <dropdown-item><code> code snippet </code></dropdown-item>
                 <dropdown-item><mark> marked text </mark></dropdown-item>
+                <div class="dropdown-item-plain">Unstyled text</div>
             </dropdown-menu>
 
         </div>

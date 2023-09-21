@@ -35,7 +35,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                     padding: '.5rem 0',
                     // margin: `${theme('dropdownMenu.spacer')} 0 0`, // override default ul
                     fontSize: '1rem',
-                    color: 'inherit',
+                    // color: 'inherit',
                     textAlign: 'left', // Ensures proper alignment if parent has it changed (e.g., modal footer)
                     listStyle: 'none',
                     backgroundColor: colors.white,
@@ -43,6 +43,9 @@ module.exports = plugin(function({ addComponents, theme }) {
                     border: `1px solid ${colors.neutral[400]}`,
                     borderRadius: '.25rem',
                     boxShadow: `0 .25rem 1rem rgba(0, 0, 0, .5)`,
+
+                    '@apply dark:bg-neutral-800': {},
+                    '@apply dark:border-neutral-700': {},
 
                     // The dropdown wrapper (`<div>`)
                     '.dropup:has(&), .dropright:has(&), .dropdown:has(&), .dropleft:has(&)': {
@@ -59,33 +62,39 @@ module.exports = plugin(function({ addComponents, theme }) {
                     // Links, buttons, and more within the dropdown menu
                     //
                     // `<button>`-specific styles are denoted with `// For <button>s`
-                    '.dropdown-item, & > :not(.dropdown-header, .dropdown-item-text, .dropdown-item-plain)': {
+                    '.dropdown-item, & > :not(.dropdown-header, .dropdown-item-text, .dropdown-item-plain, .dropdown-divider)': {
                         display: 'block',
                         width: '100%', // For `<button>`s
                         padding: '.25rem 1rem',
                         clear: 'both',
                         fontWeight: 'normal',
-                        color: theme('colors.gray.800', colors.gray[800]),
+                        color: theme('colors.neutral.800', colors.neutral[800]),
                         textAlign: 'inherit', // For `<button>`s
                         textDecoration: 'none',
                         whiteSpace: 'nowrap', // prevent links from randomly breaking onto new lines
                         backgroundColor: 'transparent', // For `<button>`s
                         border: 0, // For `<button>`s
 
+                        '@apply dark:text-neutral-300': {},
+
                         '&:hover, &:focus': {
-                            color: theme('colors.gray.800', colors.gray[900]),
+                            color: theme('colors.neutral.800', colors.neutral[900]),
                             textDecoration: 'none',
-                            backgroundColor: theme('colors.gray.100', colors.gray[100])
+                            backgroundColor: theme('colors.neutral.100', colors.neutral[100]),
+
+                            '@apply dark:bg-neutral-600 dark:text-neutral-200': {}
                         },
         
                         '&.active, &:active': {
                             color: theme('colors.white', colors.white),
                             textDecoration: 'none',
-                            backgroundColor: theme('variations.primary', colors.blue[500])
+                            backgroundColor: theme('variations.primary', colors.blue[500]),
+
+                            '@apply dark:bg-blue-500 dark:text-neutral-200': {}
                         },
         
                         '&.disabled, &:disabled': {
-                            color: theme('colors.gray.500', colors.gray[500]),
+                            color: theme('colors.neutral.500', colors.neutral[500]),
                             pointerEvents: 'none',
                             backgroundColor: 'transparent',
                             backgroundImage: 'none'
@@ -99,8 +108,10 @@ module.exports = plugin(function({ addComponents, theme }) {
                         marginBottom: 0, // for use with heading elements
                         fontSize: '.875rem',
                         fontWeight: 'bold',
-                        color: theme('colors.gray.500', colors.gray[500]),
-                        whiteSpace: 'nowrap' // as with > li > a
+                        color: theme('colors.neutral.500', colors.neutral[500]),
+                        whiteSpace: 'nowrap', // as with > li > a
+
+                        '@apply dark:text-neutral-400': {},
                     },
 
                     // Dividers (basically an `<hr>`) within the dropdown
@@ -108,14 +119,18 @@ module.exports = plugin(function({ addComponents, theme }) {
                         height: 0,
                         margin: 'calc(.125rem / 2) 0',
                         overflow: 'hidden',
-                        borderTop: `1px solid ${theme('colors.gray.200', colors.gray[200])}`,
+                        borderTop: `1px solid ${theme('colors.neutral.200', colors.neutral[200])}`,
+
+                        '@apply dark:border-neutral-700': {},
                     },
         
                     // Dropdown text
                     '.dropdown-item-text': {
                         display: 'block',
                         padding: '.25rem 1rem',
-                        color: theme('colors.gray.800', colors.gray[800]),
+                        color: theme('colors.neutral.800', colors.neutral[800]),
+
+                        '@apply dark:text-neutral-200': {},
                     },
 
                     '&.show': {
@@ -130,83 +145,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                     '&.dropdown-menu-right': {
                         right: 0,
                         left: 'auto'
-                    },
-
-                    // '.dropdown-toggle': {
-                    //     whiteSpace: 'nowrap',
-                    // },
-                
-                    // '.dropdown-toggle::after': {
-                    //     display: 'inline-block',
-                    //     marginLeft: '.3em',
-                    //     verticalAlign: 'calc(.3em * .85)',
-                    //     content: '""',
-                    //     borderTop: '.3em solid',
-                    //     borderRight: '.3em solid transparent',
-                    //     borderBottom: 0,
-                    //     borderLeft: '.3em solid transparent'
-                    // },
-    
-                    // Allow for dropdowns to go bottom up (aka, dropup-menu)
-                    // Just add .dropup after the standard .dropdown class and you're set.
-                    '.dropup &': {
-                        top: 'auto',
-                        bottom: '100%',
-                        marginTop: 0,
-                    },
-    
-                    // '.dropup .dropdown-toggle::after': {
-                    //     display: 'inline-block',
-                    //     marginLeft: '.3em',
-                    //     verticalAlign: 'calc(.3em * .85)',
-                    //     content: '""',
-                    //     borderTop: 0,
-                    //     borderRight: '.3em solid transparent',
-                    //     borderBottom: '.3em solid',
-                    //     borderLeft: '.3em solid transparent'
-                    // },
-        
-                    '.dropright &': {
-                        top: 0,
-                        right: 'auto',
-                        left: '100%',
-                        marginTop: 0,
-                    },
-    
-                    // '.dropright .dropdown-toggle::after': {
-                    //     display: 'inline-block',
-                    //     marginLeft: '.3em',
-                    //     verticalAlign: 'calc(.3em * .85)',
-                    //     content: '""',
-                    //     borderTop: '.3em solid transparent',
-                    //     borderRight: 0,
-                    //     borderBottom: '.3em solid transparent',
-                    //     borderLeft: '.3em solid',
-                    //     verticalAlign: 0
-                    // },
-        
-                    '.dropleft &': {
-                        top: 0,
-                        right: '100%',
-                        left: 'auto',
-                        marginTop: 0,
-                    },
-          
-                    // '.dropleft .dropdown-toggle::after': {
-                    //     display: 'none'
-                    // }, 
-
-                    // '.dropleft .dropdown-toggle::before': {
-                    //     display: 'inline-block',
-                    //     marginRight: '.3em',
-                    //     verticalAlign: 'calc(.3em * .85)',
-                    //     content: '""',
-                    //     borderTop: '.3em solid transparent',
-                    //     borderLeft: 0,
-                    //     borderBottom: '.3em solid transparent',
-                    //     borderRight: '.3em solid',
-                    //     verticalAlign: 0
-                    // },
+                    }
                 }
             }
         })
