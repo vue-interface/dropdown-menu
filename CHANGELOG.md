@@ -1,3 +1,10 @@
+# [2.0.0-beta.16](https://github.com/vue-interface/dropdown-menu/compare/v2.0.0-beta.15...v2.0.0-beta.16) (2023-09-23)
+
+
+### Bug Fixes
+
+* need to create a new release ([50321a3](https://github.com/vue-interface/dropdown-menu/commit/50321a33ae3cee619432c3f90e4f6f430adf0ca5))
+
 # [2.0.0-beta.15](https://github.com/vue-interface/dropdown-menu/compare/v2.0.0-beta.14...v2.0.0-beta.15) (2023-09-23)
 
 
