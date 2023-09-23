@@ -49,7 +49,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                     //
                     // `<button>`-specific styles are denoted with `// For <button>s`
                     '.dropdown-item, & > :not(.dropdown-header, .dropdown-item-text, .dropdown-item-plain, .dropdown-divider)': {
-                        display: 'block',
+                        display: 'flex',
                         width: '100%', // For `<button>`s
                         padding: '.25rem 1rem',
                         clear: 'both',
