@@ -1,3 +1,10 @@
+# [2.0.0-beta.17](https://github.com/vue-interface/dropdown-menu/compare/v2.0.0-beta.16...v2.0.0-beta.17) (2023-09-23)
+
+
+### Bug Fixes
+
+* changed items to flex from block ([7bdc8f0](https://github.com/vue-interface/dropdown-menu/commit/7bdc8f012cda3904329bfb1ae99aa5b56db1c66e))
+
 # [2.0.0-beta.16](https://github.com/vue-interface/dropdown-menu/compare/v2.0.0-beta.15...v2.0.0-beta.16) (2023-09-23)
 
 
