@@ -1,3 +1,10 @@
+# [2.0.0-beta.14](https://github.com/vue-interface/dropdown-menu/compare/v2.0.0-beta.13...v2.0.0-beta.14) (2023-09-23)
+
+
+### Bug Fixes
+
+* issues with JIT not working for BtnDropdown ([4e53feb](https://github.com/vue-interface/dropdown-menu/commit/4e53feb75c993c7f0eaa04b5975b5a079a8a8f62))
+
 # [2.0.0-beta.13](https://github.com/vue-interface/dropdown-menu/compare/v2.0.0-beta.12...v2.0.0-beta.13) (2023-09-21)
 
 
