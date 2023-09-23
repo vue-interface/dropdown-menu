@@ -1,25 +1,11 @@
-const Color = require('color');
 const plugin = require('tailwindcss/plugin');
 const colors = require('tailwindcss/colors');
-// const variations = require('@vue-interface/variant/tailwindcss/variations');
 
 module.exports = plugin(function({ addComponents, theme }) {
-    // if(theme('dropdownMenu.paddingY') === 0) {
-    //     component['.dropdown-item']['&:first-child'] = {
-    //         borderTopLeftRadius: theme('dropdownMenu.inner.borderRadius'),
-    //         borderTopRightRadius: theme('dropdownMenu.inner.borderRadius'),
-    //     };
-
-    //     component['.dropdown-item']['&:last-child'] = {
-    //         borderBottomLeftRadius: theme('dropdownMenu.inner.borderRadius'),
-    //         borderBottomRightRadius: theme('dropdownMenu.inner.borderRadius'),
-    //     };
-    // }
-
     addComponents(theme('dropdownMenu.css'));
     addComponents({
-        '.btn-dropdown': theme('dropdownMenu.css')
-    })
+        '.btn-dropdown, .BtnDropdown': theme('dropdownMenu.css')
+    });
 }, {
     theme: {
         dropdownMenu: theme => ({
