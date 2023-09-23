@@ -1,3 +1,10 @@
+# [2.0.0-beta.15](https://github.com/vue-interface/dropdown-menu/compare/v2.0.0-beta.14...v2.0.0-beta.15) (2023-09-23)
+
+
+### Bug Fixes
+
+* removed unused dep ([7139b4d](https://github.com/vue-interface/dropdown-menu/commit/7139b4de41778baa2da5bcfc1837318acccb8db7))
+
 # [2.0.0-beta.14](https://github.com/vue-interface/dropdown-menu/compare/v2.0.0-beta.13...v2.0.0-beta.14) (2023-09-23)
 
 
