@@ -3,15 +3,12 @@ const colors = require('tailwindcss/colors');
 
 module.exports = plugin(function({ addComponents, theme }) {
     addComponents(theme('dropdownMenu.css'));
-    addComponents({
-        '.btn-dropdown, .BtnDropdown': theme('dropdownMenu.css')
-    });
 }, {
     theme: {
         dropdownMenu: theme => ({
             css: {
                 // The dropdown menu
-                '.dropdown-menu, .DropdownMenu': {
+                '.dropdown-menu': {
                     position: 'absolute',
                     top: '100%',
                     left: 0,
@@ -28,7 +25,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                     backgroundClip: 'padding-box',
                     border: `1px solid ${colors.neutral[400]}`,
                     borderRadius: '.25rem',
-                    boxShadow: `0 .25rem 1rem rgba(0, 0, 0, .5)`,
+                    boxShadow: '0 .25rem 1rem rgba(0, 0, 0, .5)',
 
                     '@apply dark:bg-neutral-800': {},
                     '@apply dark:border-neutral-700': {},
@@ -88,7 +85,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                     },
         
                     // Dropdown section headers
-                    '.dropdown-header': {
+                    '.dropdown-header, & > h1, & > h2, & > h3, & > h4, & > h5, & > h6': {
                         display: 'block',
                         padding: '.5rem',
                         marginBottom: 0, // for use with heading elements
@@ -101,7 +98,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                     },
 
                     // Dividers (basically an `<hr>`) within the dropdown
-                    '.dropdown-divider': {
+                    '.dropdown-divider, & > hr': {
                         height: 0,
                         margin: 'calc(.125rem / 2) 0',
                         overflow: 'hidden',
