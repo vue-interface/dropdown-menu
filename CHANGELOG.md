@@ -1,3 +1,10 @@
+# [2.0.0-beta.18](https://github.com/vue-interface/dropdown-menu/compare/v2.0.0-beta.17...v2.0.0-beta.18) (2023-09-26)
+
+
+### Bug Fixes
+
+* updated tsconfig ([1d0bdfc](https://github.com/vue-interface/dropdown-menu/commit/1d0bdfce463643f9e2b761d14f77f5e0d60fc0f8))
+
 # [2.0.0-beta.17](https://github.com/vue-interface/dropdown-menu/compare/v2.0.0-beta.16...v2.0.0-beta.17) (2023-09-23)
 
 
