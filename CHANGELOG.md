@@ -1,3 +1,10 @@
+# [2.0.0-beta.19](https://github.com/vue-interface/dropdown-menu/compare/v2.0.0-beta.18...v2.0.0-beta.19) (2023-11-16)
+
+
+### Bug Fixes
+
+* default styles ([dd34cac](https://github.com/vue-interface/dropdown-menu/commit/dd34cace6bfa361afdf6ad97632cfc2bf51b0de3))
+
 # [2.0.0-beta.18](https://github.com/vue-interface/dropdown-menu/compare/v2.0.0-beta.17...v2.0.0-beta.18) (2023-09-26)
 
 
