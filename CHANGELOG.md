@@ -1,3 +1,10 @@
+# [2.0.0-beta.20](https://github.com/vue-interface/dropdown-menu/compare/v2.0.0-beta.19...v2.0.0-beta.20) (2023-11-16)
+
+
+### Bug Fixes
+
+* more issues ([dea427f](https://github.com/vue-interface/dropdown-menu/commit/dea427fbb85c8b5b6a7326104adbd7b50e68810c))
+
 # [2.0.0-beta.19](https://github.com/vue-interface/dropdown-menu/compare/v2.0.0-beta.18...v2.0.0-beta.19) (2023-11-16)
 
 
