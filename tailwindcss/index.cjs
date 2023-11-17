@@ -100,7 +100,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                     // Dividers (basically an `<hr>`) within the dropdown
                     '.dropdown-divider, & > hr': {
                         height: 0,
-                        margin: 'calc(.125rem / 2) 0',
+                        margin: 'calc(.5rem / 2) 0',
                         overflow: 'hidden',
                         borderTop: `1px solid ${theme('colors.neutral.200', colors.neutral[200])}`,
 
