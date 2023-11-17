@@ -1,3 +1,10 @@
+# [2.0.0-beta.21](https://github.com/vue-interface/dropdown-menu/compare/v2.0.0-beta.20...v2.0.0-beta.21) (2023-11-17)
+
+
+### Bug Fixes
+
+* change hr margin ([d42ffa4](https://github.com/vue-interface/dropdown-menu/commit/d42ffa46cd185b360155d97de5722261e7d51cf7))
+
 # [2.0.0-beta.20](https://github.com/vue-interface/dropdown-menu/compare/v2.0.0-beta.19...v2.0.0-beta.20) (2023-11-16)
 
 
